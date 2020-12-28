@@ -846,6 +846,65 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
+"@coreui/coreui-chartjs@2.0.0-beta.0":
+  version "2.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@coreui/coreui-chartjs/-/coreui-chartjs-2.0.0-beta.0.tgz#6233c301aa7e19c03698846da3a28ece037c8d86"
+  integrity sha512-Svua1A5YQNPbxcTMN/1TLiie/HJvT+iJ8VB3zPcy/c+ihJvFlIf7D0I5JcRL6LvQkZydq2xQiZ9/73Q+Z5BV6Q==
+  dependencies:
+    "@coreui/coreui" "^3.0.0-beta.1"
+    chart.js "^2.8.0"
+
+"@coreui/coreui@^3.0.0-beta.1":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@coreui/coreui/-/coreui-3.4.0.tgz#3e3627a1f48a00f6289204a23f71eaa6ea94e370"
+  integrity sha512-WqzockdWVkXUNmNwlqdu+AxM+9JoiWGe4rKaySu/dZme1NvVOn2ukjJlpTkssal8UKcSHyitzNixtkMCmUxE1A==
+
+"@coreui/icons-vue@^1.3.5":
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/@coreui/icons-vue/-/icons-vue-1.3.5.tgz#af3a29a180d8afe1c169537bea9a890ad55ec199"
+  integrity sha512-GgvtUzyla/kfshaGVhqOxwWOHOCOmtACGD6SXilzw2Puz9LAX6Q9YCn20C1NIkCt8qtJ09jHyyucIZ9Eu+jv0A==
+  dependencies:
+    vue "~2.6.11"
+
+"@coreui/icons@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@coreui/icons/-/icons-1.0.1.tgz#8af0fe6450904ee1dbb0abf36bf107f35cfecf5e"
+  integrity sha512-DAlvdHRC+HHecdy52vskbNzNKEpu6wHDvSlsHGrwOqNxQl1YLhGEtqAW4sKpyVE3GgysNCywUWZGFlLp8I3LgA==
+
+"@coreui/icons@^2.0.0-rc.0":
+  version "2.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/@coreui/icons/-/icons-2.0.0-rc.0.tgz#b61a503f2a98ea37054be4ab5157ac1aab77d128"
+  integrity sha512-Bg+uQKzEhERRZk1qo8tcR3bjJQDzv6+uDjt5IpjFwqnnnHE4gZE6adZ7jyMYQjgIlelEaS8ZOlE1M7aKHDWZSA==
+
+"@coreui/utils@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@coreui/utils/-/utils-1.3.1.tgz#ebe6fa00ae7f46d166b26f116e74d55dfc89f5e0"
+  integrity sha512-WuWHX7bg89cJH34TWVsLe9RsxzBhTApj+X2Ja19xhjcpxt5Gv11Ozm+fwYt6DD7DgncTvpwYrMcnNlpp701UOg==
+
+"@coreui/vue-chartjs@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@coreui/vue-chartjs/-/vue-chartjs-1.0.6.tgz#47e007eef2d3f08e1c9c6e115580201df778e79b"
+  integrity sha512-x116yRGqBfxBxFFMhJXsY2MDbIBJWajSA24j2w4zyrShjshES2G6iBxi9zSbug0H+3ariYY+fyhv/0uFJ4G/Yg==
+  dependencies:
+    "@coreui/coreui-chartjs" "2.0.0-beta.0"
+    chart.js "^2.9.3"
+    vue "^2.6.12"
+
+"@coreui/vue@^3.2.7":
+  version "3.2.7"
+  resolved "https://registry.yarnpkg.com/@coreui/vue/-/vue-3.2.7.tgz#dff73f5235cbb0ca2cd42d1b5a193c6c2bc4dede"
+  integrity sha512-FGyjaa1Ic+slyXHNhWQFMaHfE9lvRc4I2vsh5/SBuKVJiEdonik4AGleejWAFuLAYV5Q1BDUPBD8G2PjhcLt7g==
+  dependencies:
+    "@coreui/icons" "^2.0.0-rc.0"
+    "@coreui/icons-vue" "^1.3.5"
+    "@coreui/utils" "^1.3.1"
+    "@popperjs/core" "^2.6.0"
+    lodash.clonedeep "~4.5.0"
+    perfect-scrollbar "~1.5.0"
+    tooltip.js "~1.3.3"
+    vue "^2.6.12"
+    vue-functional-data-merge "~3.1.0"
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -899,6 +958,11 @@
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
+
+"@popperjs/core@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.6.0.tgz#f022195afdfc942e088ee2101285a1d31c7d727f"
+  integrity sha512-cPqjjzuFWNK3BSKLm0abspP0sp/IGOli4p5I5fKFAzdS8fvjdOwDCfZqAaIiXd9lPkOWi3SUUfZof3hEb7J/uw==
 
 "@soda/friendly-errors-webpack-plugin@^1.7.1":
   version "1.8.0"
@@ -1873,6 +1937,13 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.11.0.tgz#d61f46d83b2519250e2784daf5b09479a8b41c59"
   integrity sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==
 
+axios@^0.21.1:
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+  integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
+  dependencies:
+    follow-redirects "^1.10.0"
+
 babel-eslint@^10.1.0:
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/babel-eslint/-/babel-eslint-10.1.0.tgz#6968e568a910b78fb3779cdd8b6ac2f479943232"
@@ -2379,6 +2450,29 @@ chardet@^0.7.0:
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
   integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
 
+chart.js@^2.8.0, chart.js@^2.9.3:
+  version "2.9.4"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-2.9.4.tgz#0827f9563faffb2dc5c06562f8eb10337d5b9684"
+  integrity sha512-B07aAzxcrikjAPyV+01j7BmOpxtQETxTSlQ26BEYJ+3iUkbNKaOJ/nDbT6JjyqYxseM0ON12COHYdU2cTIjC7A==
+  dependencies:
+    chartjs-color "^2.1.0"
+    moment "^2.10.2"
+
+chartjs-color-string@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/chartjs-color-string/-/chartjs-color-string-0.6.0.tgz#1df096621c0e70720a64f4135ea171d051402f71"
+  integrity sha512-TIB5OKn1hPJvO7JcteW4WY/63v6KwEdt6udfnDE9iCAZgy+V4SrbSxoIbTw/xkUIapjEI4ExGtD0+6D3KyFd7A==
+  dependencies:
+    color-name "^1.0.0"
+
+chartjs-color@^2.1.0:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/chartjs-color/-/chartjs-color-2.4.1.tgz#6118bba202fe1ea79dd7f7c0f9da93467296c3b0"
+  integrity sha512-haqOg1+Yebys/Ts/9bLo/BqUcONQOdr/hoEr2LLTRl6C5LXctUdHxsCYfvQVg5JIxITrfCNUDr4ntqmQk9+/0w==
+  dependencies:
+    chartjs-color-string "^0.6.0"
+    color-convert "^1.9.3"
+
 check-types@^8.0.3:
   version "8.0.3"
   resolved "https://registry.yarnpkg.com/check-types/-/check-types-8.0.3.tgz#3356cca19c889544f2d7a95ed49ce508a0ecf552"
@@ -2564,7 +2658,7 @@ collection-visit@^1.0.0:
     map-visit "^1.0.0"
     object-visit "^1.0.0"
 
-color-convert@^1.9.0, color-convert@^1.9.1:
+color-convert@^1.9.0, color-convert@^1.9.1, color-convert@^1.9.3:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-1.9.3.tgz#bb71850690e1f136567de629d2d5471deda4c1e8"
   integrity sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==
@@ -4137,7 +4231,7 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
-follow-redirects@^1.0.0:
+follow-redirects@^1.0.0, follow-redirects@^1.10.0:
   version "1.13.1"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.1.tgz#5f69b813376cee4fd0474a3aba835df04ab763b7"
   integrity sha512-SSG5xmZh1mkPGyKzjZP8zLjltIfpW32Y5QpdNJyjcfGxK3qo3NDDkZOZSFiGn1A6SclQxY9GzEwAHQ3dmYRWpg==
@@ -5520,6 +5614,11 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
+lodash.clonedeep@~4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
+  integrity sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
+
 lodash.defaultsdeep@^4.6.1:
   version "4.6.1"
   resolved "https://registry.yarnpkg.com/lodash.defaultsdeep/-/lodash.defaultsdeep-4.6.1.tgz#512e9bd721d272d94e3d3a63653fa17516741ca6"
@@ -5870,6 +5969,11 @@ mixin-deep@^1.2.0:
   dependencies:
     minimist "^1.2.5"
 
+moment@^2.10.2, moment@^2.19.2, moment@^2.29.1:
+  version "2.29.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
+  integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -6161,6 +6265,11 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
+
+numeral@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/numeral/-/numeral-2.0.6.tgz#4ad080936d443c2561aed9f2197efffe25f4e506"
+  integrity sha1-StCAk21EPCVhrtnyGX7//iX05QY=
 
 oauth-sign@~0.9.0:
   version "0.9.0"
@@ -6614,6 +6723,11 @@ pbkdf2@^3.0.3:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
+perfect-scrollbar@~1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/perfect-scrollbar/-/perfect-scrollbar-1.5.0.tgz#821d224ed8ff61990c23f26db63048cdc75b6b83"
+  integrity sha512-NrNHJn5mUGupSiheBTy6x+6SXCFbLlm8fVZh9moIzw/LgqElN5q4ncR4pbCBCYuCJ8Kcl9mYM0NgDxvW+b4LxA==
+
 performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
@@ -6685,6 +6799,11 @@ pnp-webpack-plugin@^1.6.4:
   integrity sha512-7Wjy+9E3WwLOEL30D+m8TSTF7qJJUJLONBnwQp0518siuMxUQUbgZwssaFX+QKlZkjHZcw/IpZCt/H0srrntSg==
   dependencies:
     ts-pnp "^1.1.6"
+
+popper.js@^1.0.2:
+  version "1.16.1"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
+  integrity sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==
 
 portfinder@^1.0.26:
   version "1.0.28"
@@ -8470,6 +8589,13 @@ toidentifier@1.0.0:
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
   integrity sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==
 
+tooltip.js@~1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/tooltip.js/-/tooltip.js-1.3.3.tgz#2ad0d77bb6776a76e117eac0afcd3c7d3a237121"
+  integrity sha512-XWWuy/dBdF/F/YpRE955yqBZ4VdLfiTAUdOqoU+wJm6phJlMpEzl/iYHZ+qJswbeT9VG822bNfsETF9wzmoy5A==
+  dependencies:
+    popper.js "^1.0.2"
+
 toposort@^1.0.0:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/toposort/-/toposort-1.0.7.tgz#2e68442d9f64ec720b8cc89e6443ac6caa950029"
@@ -8813,6 +8939,16 @@ vue-eslint-parser@^7.0.0:
     esquery "^1.0.1"
     lodash "^4.17.15"
 
+vue-filter-number-format@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/vue-filter-number-format/-/vue-filter-number-format-3.0.1.tgz#0e0674d739ad5eee23837be683802ec72bf69079"
+  integrity sha512-Le6oGY5FcRxWYoN9vG7lkhTwprV5476ZonapQoNA4/fqz053SEaeZgtZmvEua4vDcj45GWmCeG34y2LnonqBwg==
+
+vue-functional-data-merge@~3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/vue-functional-data-merge/-/vue-functional-data-merge-3.1.0.tgz#08a7797583b7f35680587f8a1d51d729aa1dc657"
+  integrity sha512-leT4kdJVQyeZNY1kmnS1xiUlQ9z1B/kdBFCILIjYYQDqZgLqCLa0UhjSSeRX6c3mUe6U5qYeM8LrEqkHJ1B4LA==
+
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
@@ -8837,6 +8973,13 @@ vue-loader@^15.9.2:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
+
+vue-moment@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/vue-moment/-/vue-moment-4.1.0.tgz#092a8ff723a96c6f85a0a8e23ad30f0bf320f3b0"
+  integrity sha512-Gzisqpg82ItlrUyiD9d0Kfru+JorW2o4mQOH06lEDZNgxci0tv/fua1Hl0bo4DozDV2JK1r52Atn/8QVCu8qQw==
+  dependencies:
+    moment "^2.19.2"
 
 vue-router@^3.2.0:
   version "3.4.9"
@@ -8864,7 +9007,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@^2.6.11:
+vue@^2.6.11, vue@^2.6.12, vue@~2.6.11:
   version "2.6.12"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"
   integrity sha512-uhmLFETqPPNyuLLbsKz6ioJ4q7AZHzD8ZVFNATNyICSZouqP2Sz0rotWQC8UNBF6VGSCs5abnKJoStA6JbCbfg==

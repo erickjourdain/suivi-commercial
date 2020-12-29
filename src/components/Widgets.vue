@@ -42,24 +42,21 @@ export default {
   data () {
     return {
       queryDemandes: {
-        measures: ['Demandes.compte'],
-        dimensions: ['Demandes.creation'],
-        timeDimensions: [{ dimension: 'Demandes.creation' }]
+        measures: ['Devis.count'],
+        timeDimensions: [{ dimension: 'Devis.dateEnvoi' }]
       },
       queryOpportunites: {
-        measures: ['Opportunites.compte'],
-        dimensions: ['Opportunites.creation'],
-        timeDimensions: [{ dimension: 'Opportunites.creation' }]
+        measures: ['Opportunites.count'],
+        timeDimensions: [{ dimension: 'Opportunites.dateCreation' }]
       },
       queryDevis: {
-        measures: ['Devis.compte'],
-        dimensions: ['Devis.creation'],
-        timeDimensions: [{ dimension: 'Devis.creation' }]
+        measures: ['Devis.count'],
+        timeDimensions: [{ dimension: 'Devis.dateEnvoi' }],
+        segments: ['Devis.coheris', 'Devis.envoye']
       },
       queryCommandes: {
-        measures: ['Commandes.compte'],
-        dimensions: ['Commandes.creation'],
-        timeDimensions: [{ dimension: 'Commandes.creation' }]
+        measures: ['Commandes.count'],
+        timeDimensions: [{ dimension: 'Commandes.dateCommande' }]
       }
     }
   }

@@ -11,11 +11,11 @@
         class="mt-3"
         style="height:70px"
         background-color="rgba(255,255,255,0.2)"
-        :data-points="data.data.values"
+        :data-points="data.values"
         :options="{ elements: { line: { borderWidth: 2.5 } } }"
         :point-hover-background-color="color"
         :label="titre"
-        :labels="data.data.labels"
+        :labels="data.labels"
       />
       <span
         v-else
@@ -66,7 +66,7 @@ export default {
     }),
     total () {
       return (this.loading) ? '-'
-        : this.$options.filters.numberFormat(this.data.data.sum)
+        : this.$options.filters.numberFormat(this.data.sum)
     }
   },
   async mounted () {

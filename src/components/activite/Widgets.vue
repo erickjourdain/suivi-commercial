@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import Widget from '@/components/Widget'
+import Widget from '@/components/cards/Widget'
 
 export default {
   name: 'Widgets',

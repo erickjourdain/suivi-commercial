@@ -11,6 +11,7 @@
     "@coreui/icons": "^1.0.1",
     "@coreui/vue": "^3.2.7",
     "@coreui/vue-chartjs": "^1.0.6",
+    "@cubejs-client/core": "^0.25.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "lodash": "^4.17.20",

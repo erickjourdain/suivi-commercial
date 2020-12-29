@@ -28,18 +28,18 @@
     </c-header-brand>
     <c-header-nav class="d-md-down-none mr-auto">
       <c-header-nav-item class="px3">
-        <c-header-nav-link to='/dashboard'>
-          Dashboard
+        <c-header-nav-link to='/activite'>
+          Activité
         </c-header-nav-link>
       </c-header-nav-item>
       <c-header-nav-item class="px3">
-        <c-header-nav-link to='/'>
-          Users
+        <c-header-nav-link to='/opportunites'>
+          Opportunités
         </c-header-nav-link>
       </c-header-nav-item>
       <c-header-nav-item class="px3">
-        <c-header-nav-link to='/'>
-          Settings
+        <c-header-nav-link to='/devis'>
+          Devis
         </c-header-nav-link>
       </c-header-nav-item>
     </c-header-nav>

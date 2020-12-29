@@ -15,7 +15,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import { findIndex } from 'lodash'
-import { request } from '@/services/api'
+import { loadData } from '@/services/cube'
 
 export default {
   name: 'Widgeticon',
@@ -61,10 +61,10 @@ export default {
     }
   },
   async mounted () {
-    await this.loadData()
+    await this.getData()
   },
   methods: {
-    async loadData () {
+    async getData () {
       this.loading = true
       const query = Object.assign({}, this.query)
       const index = findIndex(query.filters, { operator: 'inDateRange' })
@@ -72,12 +72,7 @@ export default {
         ...query.filters[index],
         values: this.range()
       }
-      const res = await request({
-        method: 'POST',
-        url: '/cube/query',
-        data: query
-      })
-      this.data = res.data
+      this.data = await loadData(query)
       this.loading = false
     },
     range () {
@@ -108,10 +103,10 @@ export default {
   },
   watch: {
     async dateRange () {
-      await this.loadData()
+      await this.getData()
     },
     async granularity () {
-      await this.loadData()
+      await this.getData()
     }
   }
 }

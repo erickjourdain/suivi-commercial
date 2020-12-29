@@ -6,14 +6,24 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect: '/dashboard',
+    redirect: '/activite',
     name: 'Home',
     component: () => import('@/containers/TheContainer'),
     children: [
       {
-        path: 'dashboard',
-        name: 'dashboard',
-        component: () => import('@/views/Dashboard')
+        path: 'activite',
+        name: 'activite',
+        component: () => import('@/views/Activite')
+      },
+      {
+        path: 'opportunites',
+        name: 'opportunites',
+        component: () => import('@/views/Opportunites')
+      },
+      {
+        path: 'devis',
+        name: 'devis',
+        component: () => import('@/views/Devis')
       }
     ]
   }

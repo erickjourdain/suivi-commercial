@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import WidgetIcon from '@/components/WidgetIcon'
+import WidgetIcon from '@/components/cards/WidgetIcon'
 
 export default {
   name: 'Widgets',

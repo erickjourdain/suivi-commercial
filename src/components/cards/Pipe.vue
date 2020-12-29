@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { request } from '@/services/api'
+import { loadData } from '@/services/cube'
 
 export default {
   name: 'Pipe',
@@ -51,19 +51,9 @@ export default {
     }
   },
   async mounted () {
-    await this.loadData()
-  },
-  methods: {
-    async loadData () {
-      this.loading = true
-      const res = await request({
-        method: 'POST',
-        url: '/cube/query',
-        data: this.query
-      })
-      this.data = res.data
-      this.loading = false
-    }
+    this.loading = true
+    this.data = await loadData(this.query)
+    this.loading = false
   }
 }
 </script>

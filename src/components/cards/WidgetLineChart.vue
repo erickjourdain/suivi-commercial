@@ -60,7 +60,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('sidebar', {
+    ...mapGetters('activite', {
       dateRange: 'dateRange',
       granularity: 'granularity'
     }),
@@ -78,8 +78,8 @@ export default {
       const query = Object.assign({}, this.query)
       query.timeDimensions[0] = {
         ...query.timeDimensions[0],
-        dateRange: this.dateRange,
-        granularity: this.granularity
+        dateRange: this.dateRange.dateRange,
+        granularity: this.granularity.value
       }
       this.data = await loadData(query)
       this.loading = false

@@ -18,7 +18,7 @@ import { findIndex } from 'lodash'
 import { loadData } from '@/services/cube'
 
 export default {
-  name: 'Widgeticon',
+  name: 'WidgetIcon',
   props: {
     query: {
       type: Object,
@@ -44,16 +44,15 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('sidebar', {
-      dateRange: 'dateRange',
-      granularity: 'granularity'
+    ...mapGetters('activite', {
+      dateRange: 'dateRange'
     }),
     valeur () {
       if (this.data) {
         if (this.icon === 'cil-av-timer') {
           return `${this.$options.filters.numberFormat(this.data.average, '0.00')} jours`
         } else {
-          return this.$options.filters.numberFormat(this.data.average, '0.00a$')
+          return this.$options.filters.numberFormat(this.data.average, '0,000$')
         }
       } else {
         return '-'
@@ -70,35 +69,10 @@ export default {
       const index = findIndex(query.filters, { operator: 'inDateRange' })
       query.filters[index] = {
         ...query.filters[index],
-        values: this.range()
+        values: this.dateRange.range
       }
       this.data = await loadData(query)
       this.loading = false
-    },
-    range () {
-      const yesterday = this.$moment().subtract(1, 'days').format('YYYY-MM-DD')
-      switch (this.dateRange) {
-        case 'last 30 days':
-          return [
-            this.$moment().subtract(30, 'days').format('YYYY-MM-DD'),
-            yesterday
-          ]
-        case 'last 12 weeks':
-          return [
-            this.$moment().subtract(12, 'weeks').format('YYYY-MM-DD'),
-            yesterday
-          ]
-        case 'last 12 months':
-          return [
-            this.$moment().subtract(12, 'months').format('YYYY-MM-DD'),
-            yesterday
-          ]
-        default:
-          return [
-            this.$moment().startOf('year').format('YYYY-MM-DD'),
-            yesterday
-          ]
-      }
     }
   },
   watch: {

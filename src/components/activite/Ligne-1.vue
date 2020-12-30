@@ -1,28 +1,56 @@
 <template>
   <c-row>
     <c-col sm="6" lg="3">
-      <widget
+      <widget-line-chart
+        v-if="granularity !== 'day'"
+        :query="queryDemandes"
+        color="primary"
+        titre="Demandes"
+      />
+      <widget-bar-chart
+        v-else
         :query="queryDemandes"
         color="primary"
         titre="Demandes"
       />
     </c-col>
     <c-col sm="6" lg="3">
-      <widget
+      <widget-line-chart
+        v-if="granularity !== 'day'"
+        :query="queryOpportunites"
+        color="info"
+        titre="Opportunités"
+      />
+      <widget-bar-chart
+        v-else
         :query="queryOpportunites"
         color="info"
         titre="Opportunités"
       />
     </c-col>
     <c-col sm="6" lg="3">
-      <widget
+      <widget-line-chart
+        v-if="granularity !== 'day'"
+        :query="queryDevis"
+        color="warning"
+        titre="Devis"
+      />
+      <widget-bar-chart
+        v-else
         :query="queryDevis"
         color="warning"
         titre="Devis"
       />
     </c-col>
     <c-col sm="6" lg="3">
-      <widget
+      <widget-line-chart
+        v-if="granularity !== 'day'"
+        :query="queryCommandes"
+        color="danger"
+        titre="Commandes"
+      />
+      <widget-bar-chart
+        v-else
         :query="queryCommandes"
         color="danger"
         titre="Commandes"
@@ -32,12 +60,15 @@
 </template>
 
 <script>
-import Widget from '@/components/cards/Widget'
+import { mapGetters } from 'vuex'
+import WidgetLineChart from '@/components/cards/WidgetLineChart'
+import WidgetBarChart from '@/components/cards/WidgetBarChart'
 
 export default {
-  name: 'Widgets',
+  name: 'ActiviteLigne1',
   components: {
-    Widget
+    WidgetLineChart,
+    WidgetBarChart
   },
   data () {
     return {
@@ -59,6 +90,11 @@ export default {
         timeDimensions: [{ dimension: 'Commandes.dateCommande' }]
       }
     }
+  },
+  computed: {
+    ...mapGetters('activite', {
+      granularity: 'granularity'
+    })
   }
 }
 </script>

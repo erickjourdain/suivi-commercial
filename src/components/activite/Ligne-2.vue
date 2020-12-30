@@ -20,7 +20,7 @@
       <widget-icon
         :query="queryDevis"
         color="gradient-warning"
-        titre="Devi moyen"
+        titre="Devis moyen"
         icon="cil-euro"
       />
     </c-col>
@@ -39,7 +39,7 @@
 import WidgetIcon from '@/components/cards/WidgetIcon'
 
 export default {
-  name: 'Widgets',
+  name: 'ActiviteLigne2',
   components: {
     WidgetIcon
   },

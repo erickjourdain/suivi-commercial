@@ -1,10 +1,16 @@
-import { cilSettings, cilAvTimer, cilEuro } from '@coreui/icons'
+import {
+  cilSettings, cilAvTimer, cilEuro, cilChatBubble, cilTask,
+  cilListRich
+} from '@coreui/icons'
 
 export const iconsSet = Object.assign(
   {},
   {
     cilAvTimer,
     cilEuro,
-    cilSettings
+    cilSettings,
+    cilChatBubble,
+    cilTask,
+    cilListRich
   }
 )

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import { addAuthorisation, request } from '@/services/api'
+import activite from './activite'
 import sidebar from './sidebar'
 
 Vue.use(Vuex)
@@ -34,6 +35,7 @@ export default new Vuex.Store({
     }
   },
   modules: {
+    activite,
     sidebar
   }
 })

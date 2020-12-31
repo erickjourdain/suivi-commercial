@@ -1,6 +1,6 @@
 import {
   cilSettings, cilAvTimer, cilEuro, cilChatBubble, cilTask,
-  cilListRich
+  cilListRich, cilDescription
 } from '@coreui/icons'
 
 export const iconsSet = Object.assign(
@@ -11,6 +11,7 @@ export const iconsSet = Object.assign(
     cilSettings,
     cilChatBubble,
     cilTask,
-    cilListRich
+    cilListRich,
+    cilDescription
   }
 )

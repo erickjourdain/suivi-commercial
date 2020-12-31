@@ -1,7 +1,7 @@
 <template>
     <c-widget-icon
       :header="valeur"
-      :text="titre"
+      :text="titre[0]"
       :color="color"
       :icon-padding="false"
     >
@@ -29,7 +29,7 @@ export default {
       required: true
     },
     titre: {
-      type: String,
+      type: Array,
       required: true
     },
     icon: {
@@ -49,11 +49,7 @@ export default {
     }),
     valeur () {
       if (this.data) {
-        if (this.icon === 'cil-av-timer') {
-          return `${this.$options.filters.numberFormat(this.data.average, '0.00')} jours`
-        } else {
-          return this.$options.filters.numberFormat(this.data.average, '0,000$')
-        }
+        return `${this.$options.filters.numberFormat(this.data.average, this.titre[1])} ${this.titre[2]}`
       } else {
         return '-'
       }

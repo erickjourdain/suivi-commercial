@@ -8,17 +8,6 @@
         &copy; {{ new Date().getFullYear() }} LNE
       </span>
     </div>
-    <div class="mfs-auto">
-      <span
-        class="mr-1"
-        target="_blank"
-      >
-        Power by
-      </span>
-      <a href="https://coreui.io/vue">
-        CoreUI for Vue
-      </a>
-    </div>
   </c-footer>
 </template>
 

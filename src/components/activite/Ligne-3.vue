@@ -36,7 +36,7 @@
     <c-col sm="6" lg="3">
       <widget-brand
         color="danger"
-        icon="cil-list-rich"
+        icon="cil-description"
         :titre="{
           right: ['enregitrées', '0.00a$'],
           left: ['en attente', '0.00a$']
@@ -61,14 +61,14 @@ export default {
         {
           measures: ['Opportunites.count'],
           filters: [
-            { member: 'Opportunites.dateFin', operator: 'set' },
+            { member: 'Opportunites.dateFin', operator: 'notSet' },
             { member: 'Opportunites.dateCreation', operator: 'inDateRange' }
           ]
         },
         {
           measures: ['Opportunites.count'],
           filters: [
-            { member: 'Opportunites.dateFin', operator: 'set' },
+            { member: 'Opportunites.dateFin', operator: 'notSet' },
             { member: 'Opportunites.dateDecision', operator: 'lt', values: [this.$moment().format('YYYY-MM-DD')] },
             { member: 'Opportunites.dateCreation', operator: 'inDateRange' }
           ]
@@ -78,14 +78,14 @@ export default {
         {
           measures: ['Opportunites.count'],
           filters: [
-            { member: 'Opportunites.dateFin', operator: 'set' },
+            { member: 'Opportunites.dateFin', operator: 'notSet' },
             { member: 'Opportunites.dateCreation', operator: 'inDateRange' }
           ]
         },
         {
           measures: ['Opportunites.count'],
           filters: [
-            { member: 'Opportunites.dateFin', operator: 'set' },
+            { member: 'Opportunites.dateFin', operator: 'notSet' },
             { member: 'Opportunites.dateDecision', operator: 'lt', values: [this.$moment().format('YYYY-MM-DD')] },
             { member: 'Opportunites.dateCreation', operator: 'inDateRange' }
           ]

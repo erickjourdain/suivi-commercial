@@ -4,7 +4,7 @@
       <widget-icon
         :query="queryDemandes"
         color="gradient-primary"
-        titre="Délais demandes"
+        :titre="['Délais traitement', '0,00', 'jours']"
         icon="cil-av-timer"
       />
     </c-col>
@@ -12,7 +12,7 @@
       <widget-icon
         :query="queryOpportunites"
         color="gradient-info"
-        titre="Délais opportunités"
+        :titre="['Délais traitement', '0,00', 'jours']"
         icon="cil-av-timer"
       />
     </c-col>
@@ -20,7 +20,7 @@
       <widget-icon
         :query="queryDevis"
         color="gradient-warning"
-        titre="Devis moyen"
+        :titre="['Devis moyen', '0,000$', '']"
         icon="cil-euro"
       />
     </c-col>
@@ -28,7 +28,7 @@
       <widget-icon
         :query="queryCommandes"
         color="gradient-danger"
-        titre="Commande moyenne"
+        :titre="['Commande moyenne', '0,000$', '']"
         icon="cil-euro"
       />
     </c-col>

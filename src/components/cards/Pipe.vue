@@ -33,7 +33,7 @@
 import { loadData } from '@/services/cube'
 
 export default {
-  name: 'Pipe',
+  name: 'CardPipe',
   props: {
     query: {
       type: Object,

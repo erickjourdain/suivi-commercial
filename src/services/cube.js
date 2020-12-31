@@ -1,5 +1,6 @@
 import cubejs from '@cubejs-client/core'
-import { map, mean, sum } from 'lodash'
+import numeral from 'numeral'
+import { forEach, map, mean, sum, sumBy } from 'lodash'
 
 let cubejsApi = null
 
@@ -23,7 +24,7 @@ const createCubeInstance = () => {
  * @param  - [Query object](query-format) la requête à éxecuter
  * @return - Promise<ResultSet> résultat de la requête
  */
-const loadData = async (query) => {
+const loadData = async (query, bins = false) => {
   try {
     // création de l'instance du cube si inexistante
     if (!cubejsApi) createCubeInstance()
@@ -31,13 +32,34 @@ const loadData = async (query) => {
     // lancement de la requête de récupération des données
     const resultSet = await cubejsApi.load(query)
 
-    // transformation du résultat pour affichage dans les composants
-    const values = (resultSet.series()[0] && resultSet.series()[0].series)
-      ? map(resultSet.series()[0].series, 'value') : []
-    const labels = (resultSet.series()[0] && resultSet.series()[0].series)
-      ? map(resultSet.series()[0].series, 'x') : []
+    let values, labels
+
+    if (resultSet.series()[0] && resultSet.series()[0].series) {
+      if (bins) {
+        const total = sumBy(resultSet.series()[0].series, 'value')
+        values = map(bins, bin => {
+          return sumBy(resultSet.series()[0].series, d => {
+            if (parseInt(d.x) >= bin.min && parseInt(d.x) < bin.max) {
+              return d.value
+            } else return 0
+          })
+        })
+        labels = map(bins, (b, ind) => {
+          const percentage = numeral(values[ind] / total).format('0.0%')
+          return `${b.titre} - ${percentage}`
+        })
+      } else {
+      // transformation du résultat pour affichage dans les composants
+        values = map(resultSet.series()[0].series, 'value')
+        labels = map(resultSet.series()[0].series, 'x')
+      }
+    } else {
+      values = []
+      labels = []
+    }
 
     return {
+      resultSet,
       values,
       labels,
       sum: sum(values),
@@ -48,6 +70,36 @@ const loadData = async (query) => {
   }
 }
 
+const drilldown = async (query, itemsTransform = null) => {
+  try {
+    // création de l'instance du cube si inexistante
+    if (!cubejsApi) createCubeInstance()
+
+    // lancement de la requête de récupération des données
+    const resultSet = await cubejsApi.load(query,
+      {
+        kip: !query
+      }
+    )
+
+    let res = resultSet.tablePivot()
+
+    if (itemsTransform) {
+      res = map(res, data => {
+        forEach(itemsTransform, item => {
+          data[item.key] = item.funct(data[item.key])
+        })
+        return data
+      })
+    }
+
+    return res
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export {
-  loadData
+  loadData,
+  drilldown
 }

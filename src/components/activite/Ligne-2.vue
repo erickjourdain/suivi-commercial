@@ -4,7 +4,7 @@
       <widget-icon
         :query="queryDemandes"
         color="gradient-primary"
-        :titre="['Délais traitement', '0,00', 'jours']"
+        :titre="['Délais traitement', '0.00', 'jours']"
         icon="cil-av-timer"
       />
     </c-col>
@@ -12,7 +12,7 @@
       <widget-icon
         :query="queryOpportunites"
         color="gradient-info"
-        :titre="['Délais traitement', '0,00', 'jours']"
+        :titre="['Délais traitement', '0.00', 'jours']"
         icon="cil-av-timer"
       />
     </c-col>
@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import { delaiDemandes, delaiOpportunites, moyenneDevis, moyenneCommandes } from '@/assets/queries/activite/ligne2'
 import WidgetIcon from '@/components/cards/WidgetIcon'
 
 export default {
@@ -45,42 +46,10 @@ export default {
   },
   data () {
     return {
-      queryDemandes: {
-        measures: ['Opportunites.count'],
-        dimensions: ['Opportunites.delaiTraitement'],
-        filters: [{
-          member: 'Opportunites.dateFin',
-          operator: 'set'
-        }, {
-          member: 'Opportunites.dateFin',
-          operator: 'inDateRange'
-        }]
-      },
-      queryOpportunites: {
-        measures: ['Opportunites.count'],
-        dimensions: ['Opportunites.delaiTraitement'],
-        filters: [{
-          member: 'Opportunites.dateFin',
-          operator: 'set'
-        }, {
-          member: 'Opportunites.dateFin',
-          operator: 'inDateRange'
-        }]
-      },
-      queryDevis: {
-        measures: ['Devis.average'],
-        filters: [{
-          member: 'Devis.dateEnvoi',
-          operator: 'inDateRange'
-        }]
-      },
-      queryCommandes: {
-        measures: ['Commandes.average'],
-        filters: [{
-          member: 'Commandes.dateCommande',
-          operator: 'inDateRange'
-        }]
-      }
+      queryDemandes: delaiDemandes,
+      queryOpportunites: delaiOpportunites,
+      queryDevis: moyenneDevis,
+      queryCommandes: moyenneCommandes
     }
   }
 }

@@ -61,6 +61,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { creationDemandes, creationOpportunites, creationDevis, creationCommandes } from '@/assets/queries/activite/ligne1'
 import WidgetLineChart from '@/components/cards/WidgetLineChart'
 import WidgetBarChart from '@/components/cards/WidgetBarChart'
 
@@ -72,23 +73,10 @@ export default {
   },
   data () {
     return {
-      queryDemandes: {
-        measures: ['Devis.count'],
-        timeDimensions: [{ dimension: 'Devis.dateEnvoi' }]
-      },
-      queryOpportunites: {
-        measures: ['Opportunites.count'],
-        timeDimensions: [{ dimension: 'Opportunites.dateCreation' }]
-      },
-      queryDevis: {
-        measures: ['Devis.count'],
-        timeDimensions: [{ dimension: 'Devis.dateEnvoi' }],
-        segments: ['Devis.coheris', 'Devis.envoye']
-      },
-      queryCommandes: {
-        measures: ['Commandes.count'],
-        timeDimensions: [{ dimension: 'Commandes.dateCommande' }]
-      }
+      queryDemandes: creationDemandes,
+      queryOpportunites: creationOpportunites,
+      queryDevis: creationDevis,
+      queryCommandes: creationCommandes
     }
   },
   computed: {

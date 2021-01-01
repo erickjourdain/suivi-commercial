@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { distributionMotifs, delaiTraitement, enRetard } from '@/assets/queries/opportunites/ligne1'
 import Pipe from '@/components/cards/Pipe.vue'
 import WidgetIcon from '@/components/cards/WidgetIcon.vue'
 import Doughnut from '@/components/cards/Doughnut.vue'
@@ -35,35 +36,9 @@ export default {
   },
   data () {
     return {
-      ouvertes: {
-        measures: ['Opportunites.value'],
-        dimensions: ['Opportunites.origine'],
-        segments: ['Opportunites.coheris'],
-        filters: [{
-          member: 'Opportunites.origine',
-          operator: 'set'
-        }],
-        order: {
-          'Opportunites.value': 'desc'
-        }
-      },
-      enRetard: {
-        measures: ['Opportunites.count'],
-        segments: ['Opportunites.coheris'],
-        filters: [
-          { member: 'Opportunites.dateFin', operator: 'notSet' },
-          { member: 'Opportunites.dateDecision', operator: 'lt', values: [this.$moment().format('YYYY-MM-DD')] }
-        ]
-      },
-      delaisTraitement: {
-        measures: ['Opportunites.count'],
-        segments: ['Opportunites.coheris'],
-        dimensions: ['Opportunites.delaiTraitement'],
-        filters: [
-          { member: 'Opportunites.dateFin', operator: 'set' }
-        ],
-        order: { 'Opportunites.delaiTraitement': 'asc' }
-      }
+      ouvertes: distributionMotifs,
+      enRetard: enRetard,
+      delaisTraitement: delaiTraitement
     }
   }
 }

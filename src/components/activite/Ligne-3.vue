@@ -38,7 +38,7 @@
         color="danger"
         icon="cil-description"
         :titre="{
-          right: ['enregitrées', '0.00a$'],
+          right: ['enregistrées', '0.00a$'],
           left: ['en attente', '0.00a$']
         }"
         :queries="queriesCommandes"
@@ -48,6 +48,16 @@
 </template>
 
 <script>
+import {
+  demandesOuvertes,
+  demandesEnRetard,
+  opportunitesOuvertes,
+  opportunitesEnRetard,
+  devisEmis,
+  devisARelancer,
+  commandesEnregistrees,
+  commandesEnAttente
+} from '@/assets/queries/activite/ligne3'
 import WidgetBrand from '@/components/cards/WidgetBrand'
 
 export default {
@@ -57,72 +67,10 @@ export default {
   },
   data () {
     return {
-      queriesDemandes: [
-        {
-          measures: ['Opportunites.count'],
-          filters: [
-            { member: 'Opportunites.dateFin', operator: 'notSet' },
-            { member: 'Opportunites.dateCreation', operator: 'inDateRange' }
-          ]
-        },
-        {
-          measures: ['Opportunites.count'],
-          filters: [
-            { member: 'Opportunites.dateFin', operator: 'notSet' },
-            { member: 'Opportunites.dateDecision', operator: 'lt', values: [this.$moment().format('YYYY-MM-DD')] },
-            { member: 'Opportunites.dateCreation', operator: 'inDateRange' }
-          ]
-        }
-      ],
-      queriesOpportunites: [
-        {
-          measures: ['Opportunites.count'],
-          filters: [
-            { member: 'Opportunites.dateFin', operator: 'notSet' },
-            { member: 'Opportunites.dateCreation', operator: 'inDateRange' }
-          ]
-        },
-        {
-          measures: ['Opportunites.count'],
-          filters: [
-            { member: 'Opportunites.dateFin', operator: 'notSet' },
-            { member: 'Opportunites.dateDecision', operator: 'lt', values: [this.$moment().format('YYYY-MM-DD')] },
-            { member: 'Opportunites.dateCreation', operator: 'inDateRange' }
-          ]
-        }
-      ],
-      queriesDevis: [
-        {
-          measures: ['Devis.value'],
-          filters: [
-            { member: 'Devis.statut', operator: 'equals', values: ['4'] },
-            { member: 'Devis.dateEnvoi', operator: 'inDateRange' }
-          ]
-        },
-        {
-          measures: ['Devis.value'],
-          filters: [
-            { member: 'Devis.statut', operator: 'equals', values: ['4'] },
-            { member: 'Devis.dateEnvoi', operator: 'inDateRange' }
-          ]
-        }
-      ],
-      queriesCommandes: [
-        {
-          measures: ['Commandes.value'],
-          filters: [
-            { member: 'Commandes.dateCommande', operator: 'inDateRange' }
-          ],
-          segments: ['Commandes.valide']
-        },
-        {
-          measures: ['Commandes.value'],
-          filters: [
-            { member: 'Commandes.dateCommande', operator: 'inDateRange' }
-          ],
-          segments: ['Commandes.absente']
-        }
-      ]
+      queriesDemandes: [demandesOuvertes, demandesEnRetard],
+      queriesOpportunites: [opportunitesOuvertes, opportunitesEnRetard],
+      queriesDevis: [devisEmis, devisARelancer],
+      queriesCommandes: [commandesEnregistrees, commandesEnAttente]
     }
   }
 }

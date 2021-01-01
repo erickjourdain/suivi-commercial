@@ -67,6 +67,7 @@
 
 <script>
 import { concat, findKey, isEmpty, isNumber, map, mapKeys, pickBy } from 'lodash'
+import { query, keyMap, itemsTransform, fields } from '@/assets/queries/opportunites/ligne2'
 import { drilldown, loadData } from '@/services/cube'
 
 export default {
@@ -80,38 +81,10 @@ export default {
       startDate: null,
       endDate: null,
       items: [],
-      query: {
-        measures: ['Opportunites.count'],
-        segments: ['Opportunites.coheris'],
-        filters: [],
-        dimensions: []
-      },
-      keyMap: {
-        'Opportunites.description': 'description',
-        'Opportunites.responsable': 'responsable',
-        'Opportunites.dateCreation': 'dateCreation',
-        'Opportunites.dateDecision': 'dateDecision',
-        'Opportunites.montant': 'montant',
-        'Opportunites.createur': 'createur'
-      },
-      itemsTransform: [
-        {
-          key: 'Opportunites.dateCreation',
-          funct: (val) => (this.$moment(val).isValid()) ? this.$moment(val).unix() : ''
-        },
-        {
-          key: 'Opportunites.dateDecision',
-          funct: (val) => (this.$moment(val).isValid()) ? this.$moment(val).unix() : ''
-        }
-      ],
-      fields: [
-        { key: 'dateCreation', label: 'date creation', sorter: true, _style: 'width:200px' },
-        { key: 'description', label: 'description', sorter: false },
-        { key: 'createur', label: 'createur', sorter: false, _style: 'width:125px' },
-        { key: 'montant', label: 'montant', sorter: true, filter: false, _style: 'width:100px' },
-        { key: 'dateDecision', label: 'date décision', sorter: true, _style: 'width:200px' },
-        { key: 'responsable', label: 'responsable', sorter: false, _style: 'width:125px' }
-      ],
+      query,
+      keyMap,
+      itemsTransform,
+      fields,
       filters: [],
       order: {},
       offset: 0
@@ -129,7 +102,7 @@ export default {
     },
     async loadItems () {
       this.loading = true
-      const query = { ...this.query, limit: this.itemsPerPage }
+      const query = { ...this.query }
       if (this.filters.length) {
         query.filters = concat(query.filters, this.filters)
       }
@@ -139,8 +112,9 @@ export default {
         xValues: [data.labels[0]],
         yValues: data.values[0]
       })
+      drillQuery.limit = this.itemsPerPage
       if (this.offset) drillQuery.offset = this.offset
-      const res = await drilldown(drillQuery, this.itemsPerPage, this.itemsTransform)
+      const res = await drilldown(drillQuery, this.itemsTransform)
       this.items = map(res, (val) => {
         return mapKeys(val, (value, key) => {
           return this.keyMap[key]
@@ -156,7 +130,7 @@ export default {
       this.filters = map(
         pickBy(filtres, (val, key) => !isEmpty(val)), (val, key) => {
           return {
-            member: `Opportunites.${key}`,
+            member: findKey(keyMap, el => el === key),
             operator: 'contains',
             values: [val]
           }

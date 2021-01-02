@@ -20,7 +20,7 @@
             size="sm"
             color="primary"
             :disabled="!isFiltered"
-            @click="reset(clean)"
+            @click="(e) => { reset(); clean() }"
           >
             reset
           </c-button>
@@ -44,15 +44,15 @@
           Du:
           <input
             type="date"
-            :value="startDate"
-            @change="setDateFilter"
+            :value="filtreDate('dateCreation', 'start')"
+            @change="(e) => setDateFilter(e, 'start', 'dateCreation')"
             class="mr-2"
           /><br>
           Au:
           <input
             type="date"
-            :value="endDate"
-            @change="(e) => setDateFilter(e, 'end')"
+            :value="filtreDate('dateCreation', 'end')"
+            @change="(e) => setDateFilter(e, 'end', 'dateCreation')"
           />
         </template>
       </c-data-table>
@@ -66,119 +66,28 @@
 </template>
 
 <script>
-import { concat, findKey, isEmpty, isNumber, map, mapKeys, pickBy } from 'lodash'
+import { tableauMixin } from '@/components/mixins/tableau'
 import { query, keyMap, itemsTransform, fields } from '@/assets/queries/opportunites/ligne2'
-import { drilldown, loadData } from '@/services/cube'
 
 export default {
   name: 'OpportuniteLigne2',
   data () {
     return {
-      loading: false,
-      page: 1,
-      itemsPerPage: 5,
-      nbPages: 0,
-      startDate: null,
-      endDate: null,
-      items: [],
-      query,
-      keyMap,
-      itemsTransform,
-      fields,
-      filters: [],
-      order: {},
-      offset: 0
+      loading: false, //    etat sur le chargement des données
+      page: 1, //           page active
+      itemsPerPage: 5, //   nombre de lignes par page
+      nbPages: 0, //        nombre total de pages
+      dateFilters: [], //   tableau des filtres calendaire
+      items: [], //         tableau des données
+      query, //             requête pour le chargement des données
+      keyMap, //            objet de transformation des clefs pour affichage des titres
+      itemsTransform, //    objet de fonctions pour la transformation des données
+      fields, //            objet définissant les colonnes à afficher et leur structure
+      filters: [], //       tableau des filtres à appliquer pour la recherche des données
+      order: {}, //         objet définissant l'ordre d'affichage des données
+      offset: 0 //          offset à appliquer pour afichage d'une page spécifique
     }
   },
-  async created () {
-    await this.loadItems(this.query)
-  },
-  methods: {
-    date (val) {
-      return (this.$moment.unix(val).isValid()) ? this.$moment.unix(val).format('DD/MM/YYYY') : ''
-    },
-    montant (val) {
-      return (isNumber(val)) ? this.$options.filters.numberFormat(val, '0.00a$') : ''
-    },
-    async loadItems () {
-      this.loading = true
-      const query = { ...this.query }
-      if (this.filters.length) {
-        query.filters = concat(query.filters, this.filters)
-      }
-      const data = await loadData(query)
-      this.nbPages = parseInt(data.sum / this.itemsPerPage)
-      const drillQuery = data.resultSet.drillDown({
-        xValues: [data.labels[0]],
-        yValues: data.values[0]
-      })
-      drillQuery.limit = this.itemsPerPage
-      if (this.offset) drillQuery.offset = this.offset
-      const res = await drilldown(drillQuery, this.itemsTransform)
-      this.items = map(res, (val) => {
-        return mapKeys(val, (value, key) => {
-          return this.keyMap[key]
-        })
-      })
-      this.loading = false
-    },
-    async paginationChange (value) {
-      this.itemsPerPage = value
-      await this.loadItems()
-    },
-    async filterChange (filtres) {
-      this.filters = map(
-        pickBy(filtres, (val, key) => !isEmpty(val)), (val, key) => {
-          return {
-            member: findKey(keyMap, el => el === key),
-            operator: 'contains',
-            values: [val]
-          }
-        }
-      )
-      await this.loadItems()
-    },
-    async soterChange (value) {
-      const key = findKey(this.keyMap, v => v === value.column)
-      const order = {
-        [key]: (value.asc) ? 'asc' : 'desc'
-      }
-      this.filters = concat(this.filters, { member: key, operator: 'set' })
-      this.order = order
-      await this.loadItems()
-    },
-    async setDateFilter (e, end) {
-      if (end) {
-        this.endDate = e.target.value
-      } else {
-        this.startDate = e.target.value
-      }
-      if (this.startDate && this.endDate) {
-        this.filters = concat(this.filters, {
-          member: 'Opportunites.dateCreation',
-          operator: 'inDateRange',
-          values: [this.startDate, this.endDate]
-        })
-      }
-      await this.loadItems()
-    },
-    async reset (clean) {
-      this.filters = []
-      this.order = {}
-      this.itemsPerPage = 5
-      this.page = 1
-      this.offset = 0
-      this.startDate = null
-      this.endDate = null
-      clean()
-      await this.loadItems()
-    }
-  },
-  watch: {
-    async page (val) {
-      this.offset = (val - 1) * this.itemsPerPage
-      await this.loadItems()
-    }
-  }
+  mixins: [tableauMixin]
 }
 </script>

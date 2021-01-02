@@ -4,6 +4,7 @@ node_modules
 
 # queries
 src/assets/queries
+queries.zip
 
 # local env files
 .env.local

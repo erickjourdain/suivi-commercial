@@ -1,4 +1,5 @@
 import cubejs from '@cubejs-client/core'
+import moment from 'moment'
 import numeral from 'numeral'
 import { forEach, map, mean, sum, sumBy } from 'lodash'
 
@@ -24,7 +25,7 @@ const createCubeInstance = () => {
  * @param  - [Query object](query-format) la requête à éxecuter
  * @return - Promise<ResultSet> résultat de la requête
  */
-const loadData = async (query, bins = false) => {
+const loadData = async (query, bins = false, label = false) => {
   try {
     // création de l'instance du cube si inexistante
     if (!cubejsApi) createCubeInstance()
@@ -51,7 +52,19 @@ const loadData = async (query, bins = false) => {
       } else {
       // transformation du résultat pour affichage dans les composants
         values = map(resultSet.series()[0].series, 'value')
-        labels = map(resultSet.series()[0].series, 'x')
+        console.log(label)
+        labels = map(resultSet.series()[0].series, (el) => {
+          switch (label) {
+            case 'day':
+              return el.x
+            case 'week':
+              return `sem. ${moment(el.x).week()}`
+            case 'month':
+              return moment(el.x).month().format('MMMM')
+            default:
+              return el.x
+          }
+        })
       }
     } else {
       values = []

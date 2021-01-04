@@ -2,7 +2,7 @@
   <c-row>
     <c-col sm="6" lg="3">
       <widget-line-chart
-        v-if="granularity !== 'day'"
+        v-if="dateRange.granularity !== 'day'"
         :query="queryDemandes"
         color="primary"
         titre="Demandes"
@@ -16,7 +16,7 @@
     </c-col>
     <c-col sm="6" lg="3">
       <widget-line-chart
-        v-if="granularity !== 'day'"
+        v-if="dateRange.granularity !== 'day'"
         :query="queryOpportunites"
         color="info"
         titre="Opportunités"
@@ -30,7 +30,7 @@
     </c-col>
     <c-col sm="6" lg="3">
       <widget-line-chart
-        v-if="granularity !== 'day'"
+        v-if="dateRange.granularity !== 'day'"
         :query="queryDevis"
         color="warning"
         titre="Devis"
@@ -44,7 +44,7 @@
     </c-col>
     <c-col sm="6" lg="3">
       <widget-line-chart
-        v-if="granularity !== 'day'"
+        v-if="dateRange.granularity !== 'day'"
         :query="queryCommandes"
         color="danger"
         titre="Commandes"
@@ -81,7 +81,7 @@ export default {
   },
   computed: {
     ...mapGetters('activite', {
-      granularity: 'granularity'
+      dateRange: 'dateRange'
     })
   }
 }

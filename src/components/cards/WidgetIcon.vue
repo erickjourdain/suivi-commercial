@@ -74,10 +74,10 @@ export default {
   watch: {
     async dateRange () {
       await this.getData()
-    },
+    } /*,
     async granularity () {
       await this.getData()
-    }
+    } */
   }
 }
 </script>

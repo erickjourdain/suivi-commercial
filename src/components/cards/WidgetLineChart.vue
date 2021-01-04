@@ -61,8 +61,8 @@ export default {
   },
   computed: {
     ...mapGetters('activite', {
-      dateRange: 'dateRange',
-      granularity: 'granularity'
+      dateRange: 'dateRange' /*,
+      granularity: 'granularity' */
     }),
     total () {
       return (this.loading) ? '-'
@@ -79,19 +79,19 @@ export default {
       query.timeDimensions[0] = {
         ...query.timeDimensions[0],
         dateRange: this.dateRange.dateRange,
-        granularity: this.granularity.value
+        granularity: this.dateRange.granularity
       }
-      this.data = await loadData(query)
+      this.data = await loadData(query, false, query.timeDimesions[0].granularity)
       this.loading = false
     }
   },
   watch: {
     async dateRange () {
       await this.getData()
-    },
+    } /*,
     async granularity () {
       await this.getData()
-    }
+    } */
   }
 }
 </script>

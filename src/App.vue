@@ -23,7 +23,7 @@ export default {
       url: '/auth/login',
       data: {
         name: 'erick',
-        password: 123456
+        password: '123456'
       }
     })
     this.set(['user', res.data.user])
